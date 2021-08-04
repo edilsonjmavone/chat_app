@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+      
+      <script src="./lib/socket.io.min.js"></script>
+      <link rel="stylesheet" href="style.css">
+     
+      
+</head>
+<body>
+      
+      <div id="inputs">
+            <h1>Simple Chat</h1><br>
+            <input id="author" placeholder="Your name" type="text"> <br> <br>
+            <input id="msg" placeholder="Say something" type="text"> <br> <br>
+            <button id="submit">send</button>   
+      </div>
+      <br>
+      <div id="chatBox">
+            <ul id="dataB">
+                 
+                  
+            </ul>
+      </div>
+      <script>
+            //Using Socket.io
+            const url = window.location.href
+            const socket = io(url)
+            const sub = document.querySelector('#submit')
+            
+            
+            
+            
+            //EVENTS
+            
+            // WebSokeckt events
+            socket.on('hey', data=>{      
+                  let ele = document.createElement('li')
+                  let br = document.createElement('br')
+                  ele.textContent= `From ${data.author}: ${data.message}`
+                  document.querySelector("#dataB").appendChild(ele)
+                  document.querySelector("#dataB").appendChild(br)                  
+            })
+            
+            sub.addEventListener('click', ()=>{ 
+                  let author = document.querySelector('#author').value
+                  let message = document.querySelector('#msg').value
+                  
+                  if(author && message){ 
+                        const data = {
+                              message,
+                              author 
+                        }
+                        socket.emit("msg", data)
+                  }else{
+                        alert("type something!!!")
+                  }    
+                  return;
+            })
+
+
+            //Methods
+
+           
+
+      //"https://cdn.socket.io/3.1.3/socket.io.min.js"
+      </script>
+</body>
+</html>
