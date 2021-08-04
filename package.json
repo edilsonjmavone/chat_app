@@ -2,11 +2,13 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "build/app.js",
   "scripts": {
-    "dev": "ts-node-dev --transpile-only src/app.ts"
+    "dev": "ts-node-dev --transpile-only src/app.ts",
+    "build":"tsc",
+    "start": "node build/app.js"
   },
-  "author": "",
+  "author": "edilJMav",
   "license": "ISC",
   "dependencies": {
     "@types/socket.io": "^3.0.2",

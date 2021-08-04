@@ -8,10 +8,9 @@ import path from "path";
 
 const app = express();
 const port = process.env.PORT || 3333
-const time = process.env.TIMES
 const server = http.createServer(app)
 const io = new socketio.Server(server)
-console.log(time)
+
 
 app.use(express.static(path.join(__dirname,"./public/")))
 
