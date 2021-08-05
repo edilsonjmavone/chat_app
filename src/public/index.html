@@ -26,7 +26,7 @@
                   
             </ul>
       </div>
-      <script>alert("HELLO im a hacker !!")</script>
+      
       <script>
             //Using Socket.io
             const url = window.location.href
@@ -39,13 +39,19 @@
             //EVENTS
             
             // WebSokeckt events
-            socket.on('hey', data=>{      
+            socket.on("new_client", data =>{
+                  alert(`a new stranger is among us !!`)
+            })
+            
+            socket.on('hey', data => writeMsg(data))
+
+            function writeMsg(data){
                   let ele = document.createElement('li')
                   let br = document.createElement('br')
                   ele.textContent= `From ${data.author}: ${data.message}`
                   document.querySelector("#dataB").appendChild(ele)
-                  document.querySelector("#dataB").appendChild(br)                  
-            })
+                  document.querySelector("#dataB").appendChild(br)
+            }
             
             sub.addEventListener('click', ()=>{ 
                   let author = document.querySelector('#author').value

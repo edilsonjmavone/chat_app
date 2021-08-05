@@ -5,7 +5,6 @@ import http from 'http'
 import path from "path";
 
 
-
 const app = express();
 const port = process.env.PORT || 3333
 const server = http.createServer(app)
@@ -18,6 +17,8 @@ app.use(express.static(path.join(__dirname,"./public/")))
 
 io.on("connection", (socket: any)=>{
       console.log(`Connected socket: ${socket.id}`);
+
+      socket.broadcast.emit('new_client',{client: socket.id})
       
 
       socket.on("msg", function(mesage: any){
