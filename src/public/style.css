@@ -1,7 +1,7 @@
 body{
       background-color: rgb(170, 167, 170);
 }
-#inputs, #msg, #author, #submit{
+#inputs{
       margin: auto;
       text-align: center;
       border-radius: 8px;
@@ -9,10 +9,32 @@ body{
       
       
 }
-#msg, #author, #submit{
+#submit{
+      margin-right: 30px;
+      text-align: center;
+      border-radius: 8px;
+      border-style: none;
       width: 150px;
+}
+#msg{
+      width: 442px;
+      height: 22px;
+      margin-right: 30px;
+      text-align: center;
+      border-radius:9px ;
       
-      
+      border-style: none;
+}
+
+#ctext{
+      overflow-x: hidden;
+      overflow-y: auto;
+      width: 450px;
+      height: 375px;
+      text-align: left;
+}
+#ctext::-webkit-scrollbar {
+      display: none;
 }
 #chatBox{
       margin: auto;
@@ -21,10 +43,10 @@ body{
       height: 400px;
       border: 3px solid rgb(90, 126, 128);
       border-radius: 10px;
-      overflow:auto;
-      overflow:scroll;
-      overflow-x: hidden;
-      overflow-y: auto;
+      
+}
+#dataB{
+      height: 400px;
 }
 #submit{
      border-style: double;
