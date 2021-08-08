@@ -34,6 +34,11 @@ var io = new socketio.Server(server);
 app.use(express_1.default.static(path_1.default.join(__dirname, "./public/")));
 io.on("connection", function (socket) {
     console.log("Connected socket: " + socket.id);
+    /**
+     * socket.on("user_ready", (data: any) =>{
+        socket.broadcast.emit('new_client', data)
+    } )
+     */
     socket.on("msg", function (mesage) {
         io.emit('hey', mesage);
     });
