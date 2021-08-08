@@ -17,8 +17,14 @@ app.use(express.static(path.join(__dirname,"./public/")))
 
 io.on("connection", (socket: any)=>{
       console.log(`Connected socket: ${socket.id}`);
+      /**
+       * socket.on("user_ready", (data: any) =>{
+          socket.broadcast.emit('new_client', data)  
+      } )
+       */
+      
 
-      socket.broadcast.emit('new_client',{client: socket.id})
+      
       
 
       socket.on("msg", function(mesage: any){

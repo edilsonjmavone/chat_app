@@ -71,9 +71,7 @@
             const sub = document.querySelector('#submit')
             const  cUserName = "user_name"
             
-            
 
-            
 
             function requestName(){
                 let userName = prompt("Enter your name!!")
@@ -116,9 +114,13 @@
             
             
             // METHODS>>>>>>
+            function ready(){
+                  socket.emit("user_ready", getCookie("user_name"))
+            }
             function setCookie(name){
                   console.log("seting cookies")
                   document.cookie = `user_name=${name}`
+                 // ready()
             }
 
             function getCookie(cname) {
@@ -145,6 +147,7 @@
                   if (username != "") {
                         alert("Welcome again " + username);
                         document.querySelector('#msg').placeholder = `type as ${username}`
+                       // ready()
                   } else{
                         username = requestName()
                         setCookie(username);
