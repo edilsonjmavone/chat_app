@@ -20,8 +20,6 @@
                   alert(`Now your name is "${userName}"`)
                   document.querySelector('#msg').placeholder = `type as ${userName}`
                   return userName
-
-
             }else{
                  // alert(`Now your name is "${userName}"`)
                   document.querySelector('#msg').placeholder = `type as ${userName}`
@@ -127,19 +125,18 @@
       }
 
       function storeChat(){
-        localStorage.setItem("chats",JSON.stringify(chatMsgs))
+        sessionStorage.setItem("chats",JSON.stringify(chatMsgs))
       }
 
       function checkChats(){
-        const data = localStorage.getItem("chats")
+        const data = sessionStorage.getItem("chats")
         if (data) {
           chatMsgs.push = JSON.parse(data)
           chatMsgs.forEach( element => {
               addMsg(element,false)
           })
         }else{
-            console.log("there ins't a chat");
+            console.log("there ins't a chat data");
         }
-
 
       }

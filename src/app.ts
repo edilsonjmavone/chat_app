@@ -9,6 +9,7 @@ const app = express();
 const port = process.env.PORT || 3333
 const server = http.createServer(app)
 const io = new socketio.Server(server)
+let usersCount = 0
 
 
 app.use(express.static(path.join(__dirname,"./public/")))
@@ -17,24 +18,25 @@ app.use(express.static(path.join(__dirname,"./public/")))
 
 io.on("connection", (socket: any)=>{
       console.log(`Connected socket: ${socket.id}`);
+      usersCount++;
+      io.emit("update", usersCount)
       /**
        * socket.on("user_ready", (data: any) =>{
-          socket.broadcast.emit('new_client', data)  
+          socket.broadcast.emit('new_client', data)
       } )
        */
-      
-
-      
-      
-
       socket.on("msg", function(mesage: any){
-            
+
             io.emit('hey', mesage)
       })
 
-      
-})
+      socket.on("disconnect", (socket: any)=>{
+        console.log(`disconnected socket: ${socket.id}`);
+        usersCount--;
+        io.emit("update", usersCount)
+      })
 
+})
 
 server.listen(port,()=>
       console.log(`hello in port:${port}`)

@@ -1,31 +1,30 @@
+const chatMsgs = []
+const url = window.location.href
+const socket = io(url)
+const sub = document.querySelector('#submit')
+const cUserName = "user_name"
 
-      init()
-      //Using Socket.io
-      const url = window.location.href
-      const socket = io(url)
-      const sub = document.querySelector('#submit')
-      const cUserName = "user_name"
-      const chatMsgs = []
+init()
 
-      function init(){
-        checkCookie()
-        checkChats()
-      }
+function init(){
+      checkCookie()
+      checkChats()
+}
 
-      function requestName(){
-          let userName = prompt("Enter your name!!")
+function requestName(){
+      let userName = prompt("Enter your name!!")
 
-            if(userName=="" || userName == null){
-                  userName = "stranger"
-                  alert(`Now your name is "${userName}"`)
-                  document.querySelector('#msg').placeholder = `type as ${userName}`
-                  return userName
+      if(userName=="" || userName == null){
+        userName = "stranger"
+        alert(`Now your name is "${userName}"`)
+        document.querySelector('#msg').placeholder = `type as ${userName}`
+        return userName
 
 
-            }else{
+      }else{
                  // alert(`Now your name is "${userName}"`)
-                  document.querySelector('#msg').placeholder = `type as ${userName}`
-                  return userName
+          document.querySelector('#msg').placeholder = `type as ${userName}`
+            return userName
             }
       }
 
@@ -40,6 +39,9 @@
       })
 
       socket.on('hey', data => addMsg(data, true))
+      socket.on("update",usersCount =>{
+        document.querySelector("#count").innerText =  `${String(usersCount)} users in this room`
+      } )
 
 
       document.addEventListener('keydown', event =>{
@@ -47,9 +49,6 @@
                   send()
             }
       })
-
-
-
 
 
       // METHODS>>>>>>
@@ -127,11 +126,11 @@
       }
 
       function storeChat(){
-        localStorage.setItem("chats",JSON.stringify(chatMsgs))
+        sessionStorage.setItem("chats",JSON.stringify(chatMsgs))
       }
 
       function checkChats(){
-        const data = localStorage.getItem("chats")
+        const data = sessionStorage.getItem("chats")
         if (data) {
           chatMsgs.push = JSON.parse(data)
           chatMsgs.forEach( element => {
