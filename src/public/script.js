@@ -91,7 +91,9 @@ function checkCookie() {
 function addMsg(data, store) {
   let ele = document.createElement("li");
   let br = document.createElement("br");
-  ele.textContent = `From ${data.author}: ${data.message}`;
+  ele.textContent = `From ${data.author} \n ${data.message} `;
+  if (getCookie("user_name") == data.author)
+    ele.style.backgroundColor = "rgb(130, 199, 61)";
   document.querySelector("#dataB").appendChild(ele);
   document.querySelector("#dataB").appendChild(br);
   if (store) {
@@ -105,6 +107,7 @@ function send() {
 
   if (message) {
     const data = {
+      key: Math.random(),
       message: message.value,
       author: getCookie("user_name")
     };
