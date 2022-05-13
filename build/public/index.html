@@ -1,50 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Document</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
 
-      <script src="https://cdn.socket.io/3.1.3/socket.io.min.js"></script>
-      <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.socket.io/3.1.3/socket.io.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="inputs">
+      <h1>Simple Chat</h1>
+      <br />
+      <div id="chatBox">
+        <p>${} users in this room</p>
+        <div id="ctext">
+          <ul id="dataB" style="list-style-type: none;">
+            <p style="text-align: center;">
+              now you are talking with random people from internet <br />have
+              fun :)
+            </p>
+          </ul>
+        </div>
 
-
-</head>
-<body>
-
-         <div id="inputs">
-            <h1>Simple Chat</h1><br>
-            <div id="chatBox">
-              <p> ${} users in this room</p>
-                  <div id="ctext">
-                       <ul id="dataB" style="list-style-type: none;">
-                        <p style="text-align: center;">now you are talking with random people from internet <br>have fun :)</p>
-
-                       </ul>
-                  </div>
-
-                       <div style="margin:unset;">
-
-                             <input id="msg" placeholder="Say something" type="text">
-                             <!--
+        <div style="margin:unset;">
+          <input id="msg" placeholder="Say something" type="text" />
+          <!--
                                    <button id="submit" onclick="send()">send</button>
                              -->
-                       </div>
-                  <br>
-                  <br>
-            </div>
-            <br>
-
+        </div>
+        <br />
+        <br />
       </div>
-
-
+      <br />
+    </div>
 
     <script src="./script.js" charset="utf-8"></script>
-
-
-
-
-
-</body>
+  </body>
 </html>

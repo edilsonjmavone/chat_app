@@ -1,50 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Document</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./lib/socket.io.min.js" charset="utf-8"></script>
 
-      <script src="./lib/socket.io.min.js"></script>
-      <link rel="stylesheet" href="style.css">
-
-
-</head>
-<body>
-
-         <div id="inputs">
-            <h1>Simple Chat</h1><br>
-            <div id="chatBox">
-              <p id="count" style="color:red;" ></p>
-                  <div id="ctext">
-                       <ul id="dataB" style="list-style-type: none;">
-                        <p style="text-align: center;">now you are talking with random people from internet <br>have fun :)</p>
-
-                       </ul>
-                  </div>
-
-                       <div style="margin:unset;">
-
-                             <input id="msg" placeholder="Say something" type="text">
-                             <!--
-                                   <button id="submit" onclick="send()">send</button>
-                             -->
-                       </div>
-                  <br>
-                  <br>
-            </div>
-            <br>
-
-      </div>
-
-
-
-    <script src="./script.js" charset="utf-8"></script>
-
-
-
-
-
-</body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="inputs"></div>
+    <input type="text" name="" id="submit" />
+    <div role="button">Send</div>
+    <!-- <script
+      src="https://cdn.socket.io/4.5.0/socket.io.min.js"
+      integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k"
+      crossorigin="anonymous"
+    ></script> -->
+    <script defer src="./script.js" charset="utf-8"></script>
+  </body>
 </html>
